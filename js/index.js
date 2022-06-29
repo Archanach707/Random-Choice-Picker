@@ -1,4 +1,4 @@
-const tags = document.getElementById('tags')
+const tagseEl = document.getElementById('tags')
 const textarea = document.getElementById('textarea')
 
 textarea.focus()
@@ -8,5 +8,15 @@ textarea.addEventListener('keyup', (e) => {
 })
 
 function createTags(input) {
-  console.log(input) 
+  const tags = input.split(',').filter(tag => tag.trim() 
+  !== '').map(tag => tag.trim())
+ 
+  tagseEl.innerHTML = ''
+  
+  tags.forEach(tag => {
+    const tagEl = document.createElement('span')
+    tagEl.classList.add('tag')
+    tagEl.innerText = tag
+    tagseEl.appendChild(tagEl)
+  });
 }
